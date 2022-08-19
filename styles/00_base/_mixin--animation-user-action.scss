@@ -1,0 +1,87 @@
+@use './mixin--base' as base;
+
+/**
+ * Example
+ *
+ *   ***************
+ *   * HTML        *
+ *   ***************
+ *
+ *   <a>
+ *     hello world !
+ *     <i> > </i>
+ *   </a>
+ *   <img>
+ *
+ *   ***************
+ *   * CSS         *
+ *   ***************
+ *
+ *   a {
+ *     @include hover(color, blue, red);
+ *     @include hover(color, black, purple, "& i");
+ *     @include hover(transform, scale(1, 1), scale(1.1, 1.1), "& ~ img");
+ *   }
+ *
+ *   @include hover(color, blue, red)
+ *       => makes text of <a> blue
+ *       => on hover <a>, text of <a> becomes red
+ *   @include hover(color, black, purple, "& i")
+ *       => makes text of <i> black
+ *       => on hover <a>, text of <i> becomes purple
+ *   @include hover(transform, scale(1, 1), scale(1.1, 1.1), "& ~ img")
+ *       => on hover <a>, img scales
+ *
+ *   The mixin is always put on the element that you want to detect the user action.
+ *   The argument "$element" is used if you want to alter another element (a child or a brother,...)
+ */
+
+@mixin transition-between-two-states(
+  $attribute,
+  $valueBefore,
+  $valueAfter,
+  $selectorBefore,
+  $selectorAfter,
+  $element: '&'
+) {
+  #{$element} {
+    @include base.transition;
+
+    @if not str-index($element, ':before') and not str-index($element, ':after') {
+      * {
+        @include base.transition;
+      }
+    }
+  }
+
+  #{$selectorBefore} {
+    @include base.set-attribute-on($attribute, $valueBefore, $element);
+  }
+
+  #{$selectorAfter} {
+    @include base.set-attribute-on($attribute, $valueAfter, $element);
+  }
+}
+
+@mixin user-action($attribute, $valueBefore, $valueAfter, $element: '&', $pseudoClass: 'hover') {
+  @include transition-between-two-states($attribute, $valueBefore, $valueAfter, '&', #{'&:' + $pseudoClass}, $element);
+}
+
+@mixin active($attribute, $valueBefore, $valueAfter, $element: '&') {
+  @include user-action($attribute, $valueBefore, $valueAfter, $element, 'active');
+}
+
+@mixin focus($attribute, $valueBefore, $valueAfter, $element: '&') {
+  @include user-action($attribute, $valueBefore, $valueAfter, $element, 'focus');
+  @include user-action($attribute, $valueBefore, $valueAfter, $element, 'focus-visible');
+}
+
+@mixin hover($attribute, $valueBefore, $valueAfter, $element: '&') {
+  @include user-action($attribute, $valueBefore, $valueAfter, $element, 'hover');
+}
+
+@mixin user-action-all($attribute, $valueBefore, $valueAfter, $element: '&') {
+  @include active($attribute, $valueBefore, $valueAfter, $element);
+  @include focus($attribute, $valueBefore, $valueAfter, $element);
+  @include hover($attribute, $valueBefore, $valueAfter, $element);
+}

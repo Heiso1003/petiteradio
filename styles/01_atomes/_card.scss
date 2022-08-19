@@ -1,0 +1,38 @@
+.slick-slider.slick-initialized {
+  width: 100%;
+}
+
+.cardNews {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 3rem 0 3rem;
+  // max-width: 48rem;
+
+  &Img {
+    > img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &Header {
+    > span {
+      display: flex;
+      justify-content: center;
+      @include text.font-size(2.5);
+      font-weight: text.$fontWeightLight;
+      padding: 2rem 0;
+    }
+
+    > h3 {
+      padding-bottom: 3rem;
+    }
+  }
+
+  &Body {
+    > p {
+      text-overflow: " [..]";
+    }
+  }
+}

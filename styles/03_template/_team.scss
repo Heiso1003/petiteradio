@@ -1,0 +1,31 @@
+h2:not(:first-child) {
+  padding-top: 10rem;
+}
+
+.portrait {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 3rem 0 3rem;
+
+  > h3 {
+    padding-top: 3rem;
+  }
+}
+
+.portrait:nth-child(3n + 2) {
+  margin-top: 10rem;
+}
+
+@media screen and (max-width: 768px) {
+  .portrait:nth-child(3n + 2) {
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .portrait {
+        padding: 3rem 1.5rem 0 1.5rem;
+    }
+}
+  

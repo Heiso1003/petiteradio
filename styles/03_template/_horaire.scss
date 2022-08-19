@@ -1,0 +1,40 @@
+.mainHoraire {
+  .horaire {
+    display: flex;
+    .horaireImg {
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .horaireContent {
+      padding: 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      > h3 {
+        padding-bottom: 2rem;
+      }
+
+      > span {
+        @include text.font-size(2.5);
+        font-weight: text.$fontWeightLight;
+      }
+
+      > p {
+        padding-top: 3rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .horaire {
+      flex-direction: column;
+      .horaireContent {
+          padding: 5rem 0;
+      }
+    }
+  }
+}

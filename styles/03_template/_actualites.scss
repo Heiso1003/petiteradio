@@ -1,0 +1,15 @@
+.cardNews:nth-child(3n + 2) {
+  margin-top: 10rem;
+}
+
+@media screen and (max-width: 992px) {
+  .cardNews:nth-child(3n + 2) {
+    margin-top: 0;
+  }
+}
+
+// @media screen and (min-width: 768px) and (max-width: 992px) {
+//     .cardNews {
+//         padding: 3rem 1.5rem 0 1.5rem;
+//     }
+// }

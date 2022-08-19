@@ -1,0 +1,7 @@
+.btn {
+  @include default-button.button();
+
+  &Secondary {
+    @include default-button.button('secondary');
+  }
+}

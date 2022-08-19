@@ -1,0 +1,21 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  &,
+  * {
+    @include text.font-size(2.3);
+    font-family: charte.$fontFamilyMain;
+    font-weight: text.$fontWeightNormal;
+    @include text.line-height(3.5);
+    color : charte.$blackColor;
+  }
+}
+
+@include text.text-selection {
+  background: charte.$primaryColor;
+  color: charte.$blackColor;
+  text-shadow: none;
+}
+

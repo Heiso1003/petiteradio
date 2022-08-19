@@ -1,0 +1,65 @@
+h1, h2, h3, h4, h5, h6 {
+	&,
+	* {
+		font-family: charte.$fontFamilyMain;
+	}
+}
+h1 {
+	&,
+	* {
+		@include text.font-size(12.5);
+		@include text.line-height(12.5);
+		font-weight: text.$fontWeightBold;
+	}
+}
+
+h2 {
+	&,
+	* {
+		@include text.font-size(7.5);
+		@include text.line-height(9);
+		font-weight: text.$fontWeightMedium;
+	}
+}
+
+h3 {
+	&,
+	* {
+		@include text.font-size(4);
+		@include text.line-height(4.9);
+		font-weight: text.$fontWeightBold;
+	}
+}
+
+.title {
+  text-align: center;
+  padding : 10rem 0;
+}
+
+@media (max-width: 57.6rem) {
+	h1 {
+		&,
+		* {
+			@include text.font-size(6);
+			@include text.line-height(6);
+			font-weight: text.$fontWeightBold;
+		}
+	}
+	h2 {
+		&,
+		* {
+			@include text.font-size(5);
+			@include text.line-height(6);
+			font-weight: text.$fontWeightMedium;
+		}
+	}
+	
+	h3 {
+		&,
+		* {
+			@include text.font-size(3);
+			@include text.line-height(3.7);
+			font-weight: text.$fontWeightBold;
+		}
+	}
+}

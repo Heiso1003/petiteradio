@@ -1,0 +1,84 @@
+footer {
+  background-color: charte.$blackColor;
+  display: flex;
+  flex-direction: column;
+  padding: 10rem 0 20rem 0;
+
+  .listInline {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      > a {
+        color: charte.$whiteColor!important;
+      }
+    }
+  }
+
+  .logoFooter {
+    width: 20rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+  }
+
+  .footerContent {
+    display: flex;
+    justify-content: space-between;
+    > p {
+      color: charte.$whiteColor;
+    }
+
+    > p:last-child {
+      text-align: end;
+    }
+  }
+
+  .footerFooter {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+
+    a {
+      > i::before {
+        color: charte.$whiteColor !important;
+        @include text.font-size(6.5);
+      }
+
+      i:first-child {
+        margin-right: 2.5rem;
+      }
+
+      i:last-child {
+        margin-left: 2.5rem;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.space {
+  margin-top: 10rem;
+}
+@media screen and (max-width: 992px) {
+  .listInline {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footerContent {
+    flex-direction: column;
+
+    > p {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    > p:last-child {
+      text-align: center !important;
+    }
+  }
+}

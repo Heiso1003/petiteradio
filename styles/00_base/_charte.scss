@@ -1,0 +1,36 @@
+@use './mixin--text' as text;
+
+/*  Fonts  */
+
+@font-face {
+  font-family: 'helveticaneuer';
+  src: url('..//fonts/helveticaneue-webfont.woff2') format('woff2'),
+       url('../fonts/helveticaneue-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+$fontFamilyMain:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+$fontFamilyCode: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+/* Color:primary */
+$primaryColor : #F27C00;
+$primaryDarkerColor : #B24E11;
+
+
+/* Color : greys */
+$whiteColor: #ffffff;
+$blackColor: #000000;
+
+/* Icon */
+@include text.font-face('icon', '../fonts/icon', text.$fontWeightNormal, normal, block);
+$fontIcon: 'icon', sans-serif;
+$icons: (
+  'icon-arrow-left': '\e900',
+  'icon-arrow-right' : '\e901',
+  'icon-chevron-left' : '\e902',
+  'icon-chevron-right' : '\e903',
+  'icon-facebook' : '\e904',
+  'icon-youtube' : '\e905'
+);

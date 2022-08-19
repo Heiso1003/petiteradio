@@ -1,0 +1,22 @@
+.icon {
+  @include icon.design--icon-default;
+
+  &-arrow-left {
+    @include icon.design--icon(icon-arrow-left, '&:before');
+  }
+  &-arrow-right {
+    @include icon.design--icon(icon-arrow-right, '&:before');
+  }
+  &-chevron-left {
+    @include icon.design--icon(icon-chevron-left, '&:before');
+  }
+  &-chevron-right {
+    @include icon.design--icon(icon-chevron-right, '&:before');
+  }
+  &-facebook {
+    @include icon.design--icon(icon-facebook, '&:before');
+  }
+  &-youtube {
+    @include icon.design--icon(icon-youtube, '&:before');
+  }
+}
