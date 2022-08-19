@@ -16,6 +16,12 @@
     }
   }
 
+  &:hover {
+    a {
+      color: charte.$blackColor;
+    }
+  }
+
   > .responsiveMenu {
     display: none;
     position: absolute;
