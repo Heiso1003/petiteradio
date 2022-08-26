@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../src/components/common/footer/Footer";
 import Header from "../src/components/common/header/Header";
 import { getHome } from "../lib/wordpress/api";
-import { useQuery  } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import SliderNews from "../src/components/common/sliderNews/SliderNews";
 
 export default function Home() {
@@ -43,7 +43,6 @@ export default function Home() {
                   <div className="col-xl-6 col-12 leftSide">
                     <h1>{home.homePage.titreSectionNews}</h1>
                     <p>{home.homePage.contentSectionNews}</p>
-                    {/* //TODO: Replace btn par compostant btn */}
                     <button className="btn">Actualités</button>
                   </div>
                   <div className="col-xl-6 col-12 rightSide">

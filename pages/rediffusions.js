@@ -3,41 +3,51 @@ import Header from "../src/components/common/header/Header";
 import { getRediff } from "../lib/wordpress/api";
 import Footer from "../src/components/common/footer/Footer";
 import { useQuery } from "@apollo/client";
-import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Select from "react-select";
 
 export default function Rediffusions() {
   const { data } = useQuery(getRediff);
-  const [slug, setSlug] = useState("");
 
-  useEffect(() => {
-    console.log(slug);
-  }, [slug]);
+  const [filter, setFilter] = useState({});
 
   // IF data is undefined return empty
   if (data == undefined) {
     return;
   }
 
+  const options = [
+    { value: "Alain Baix", label: "Alain Baix" },
+    { value: "Michel François", label: "Michel François" },
+    { value: "Lucette Jean", label: "Lucette Jean" },
+  ];
+
   return (
     <div>
       <Header />
       <main className="mainRediffusions">
         <h1 className="title">Rediffusions</h1>
+        <div className="container">
+          <Select
+            options={options}
+            placeholder="Choisir un animateur..."
+            onChange={setFilter}
+          />
+        </div>
         {data.rediffusions.nodes.map((rediffusion) => {
-          return (
-            // <Link href={(rediffusion.slug)}>
+          if (rediffusion.rediffusionContent.animateur === filter.value)
+            return (
               <div
-                // onClick={() => setSlug(rediffusion.slug)}
                 className="container-fluid rediffusions"
                 key={rediffusion.id}
               >
                 <div className="col-md-6 col-12 img">
-                  <img
+                  <iframe
                     src={
-                      rediffusion.rediffusionContent.imageMiseEnAvant.sourceUrl
+                      "https://www.youtube.com/embed/" +
+                      rediffusion.rediffusionContent.idVideo
                     }
-                  />
+                  ></iframe>
                 </div>
                 <div className="col-md-6 col-12 content">
                   <h3>{rediffusion.title}</h3>
@@ -45,8 +55,30 @@ export default function Rediffusions() {
                   <p>{rediffusion.rediffusionContent.description}</p>
                 </div>
               </div>
-            // </Link>
-          );
+            );
+        })}
+        {data.rediffusions.nodes.map((rediffusion) => {
+          if (filter.value === undefined)
+            return (
+              <div
+                className="container-fluid rediffusions"
+                key={rediffusion.id}
+              >
+                <div className="col-md-6 col-12 img">
+                  <iframe
+                    src={
+                      "https://www.youtube.com/embed/" +
+                      rediffusion.rediffusionContent.idVideo
+                    }
+                  ></iframe>
+                </div>
+                <div className="col-md-6 col-12 content">
+                  <h3>{rediffusion.title}</h3>
+                  <span>{rediffusion.rediffusionContent.animateur}</span>
+                  <p>{rediffusion.rediffusionContent.description}</p>
+                </div>
+              </div>
+            );
         })}
       </main>
       <Footer />

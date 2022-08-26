@@ -55,7 +55,6 @@ export default function Contact() {
               <p>pub@lapetiteradio.be</p>
               <h2>Devenir animateur ?</h2>
               <p>info@lapetiteradio.be</p>
-              <button className="btnSecondary">Tutoriaux</button>
             </div>
             <div className="col-xl-6 col-12 img">
               <Image
