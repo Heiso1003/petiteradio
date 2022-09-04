@@ -22,6 +22,17 @@ export default function Actualites() {
     { value: "evenement", label: "Evénement" },
   ];
 
+  const colourStyles = {
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      console.log({ data, isDisabled, isFocused, isSelected });
+      return {
+        ...styles,
+        backgroundColor: isFocused ? "orange" : null,
+        color: "#333333",
+      };
+    },
+  };
+
   return (
     <div>
       <Header />
@@ -31,6 +42,7 @@ export default function Actualites() {
           options={options}
           placeholder="Choisir un thème..."
           onChange={setFilter}
+          styles={colourStyles}
         />
         <div className="row">
           {data.posts.nodes.map((post) => {
