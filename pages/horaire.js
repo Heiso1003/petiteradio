@@ -25,7 +25,6 @@ export default function Horaire() {
 
   const colourStyles = {
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      console.log({ data, isDisabled, isFocused, isSelected });
       return {
         ...styles,
         backgroundColor: isFocused ? "orange" : null,

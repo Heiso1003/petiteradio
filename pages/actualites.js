@@ -24,7 +24,6 @@ export default function Actualites() {
 
   const colourStyles = {
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      console.log({ data, isDisabled, isFocused, isSelected });
       return {
         ...styles,
         backgroundColor: isFocused ? "orange" : null,
@@ -85,30 +84,3 @@ export default function Actualites() {
     </div>
   );
 }
-
-// const axios = require("axios");
-// axios({
-//   url: "https://thomas.techniques-graphiques.be/backend/graphql",
-//   method: "post",
-//   data: {
-//     query: `
-//       rediffusions {
-//         nodes {
-//           slug
-//           title
-//           rediffusionContent {
-//             animateur
-//             description
-//             idVideo
-//             emission
-//             imageMiseEnAvant {
-//               sourceUrl
-//             }
-//           }
-//         }
-//       }
-//       `,
-//   },
-// }).then((result) => {
-//   console.log(result.data);
-// });
