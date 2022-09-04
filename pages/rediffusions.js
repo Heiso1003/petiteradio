@@ -22,6 +22,17 @@ export default function Rediffusions() {
     { value: "Lucette Jean", label: "Lucette Jean" },
   ];
 
+const colourStyles = {
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    console.log({ data, isDisabled, isFocused, isSelected });
+    return {
+      ...styles,
+      backgroundColor: isFocused ? "orange" : null,
+      color: "#333333"
+    };
+  }
+};
+
   return (
     <div>
       <Header />
@@ -32,6 +43,8 @@ export default function Rediffusions() {
             options={options}
             placeholder="Choisir un animateur..."
             onChange={setFilter}
+            styles={colourStyles}
+            className="dropdown"
           />
         </div>
         {data.rediffusions.nodes.map((rediffusion) => {

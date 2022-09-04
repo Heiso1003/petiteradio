@@ -3,6 +3,7 @@ footer {
   display: flex;
   flex-direction: column;
   padding: 10rem 0 20rem 0;
+  margin-top: 20rem;
 
   .listInline {
     display: flex;
@@ -10,7 +11,7 @@ footer {
 
     li {
       > a {
-        color: charte.$whiteColor!important;
+        color: charte.$whiteColor !important;
       }
     }
   }

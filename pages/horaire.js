@@ -23,6 +23,16 @@ export default function Horaire() {
     { value: "dimanche", label: "Dimanche" },
   ];
 
+  const colourStyles = {
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      console.log({ data, isDisabled, isFocused, isSelected });
+      return {
+        ...styles,
+        backgroundColor: isFocused ? "orange" : null,
+        color: "#333333",
+      };
+    },
+  };
   return (
     <div>
       <Header />
@@ -32,6 +42,8 @@ export default function Horaire() {
           options={options}
           placeholder="Choisir un jour..."
           onChange={setDay}
+          className="dropdown"
+          styles={colourStyles}
         />
         <div className="row">
           {data.horaires.nodes.map((horaire) => {
@@ -39,11 +51,13 @@ export default function Horaire() {
               return (
                 <div className="col-12 horaireContainer">
                   <img src={horaire.horaireContent.image.sourceUrl} />
-                  <div className="rightside">
+                  <div className="rightSide">
                     <h3>{horaire.horaireContent.nom}</h3>
-                    <span>
+                    <span className="timeStart">
                       {horaire.horaireContent.heureDeDebut}
-                      {"h - "}
+                      {"h"}
+                    </span>
+                    <span className="timeEnd">
                       {horaire.horaireContent.heureDeFin}
                       {"h"}
                     </span>
